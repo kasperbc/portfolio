@@ -1,0 +1,154 @@
+.App {
+  text-align: center;
+}
+
+.AppHeader {
+  background-color: #222;
+  padding: 1rem;
+  color: white;
+
+  display: flex;
+  flex: content;
+  flex-direction: row;
+
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  font-size: large;
+
+  .Logo {
+    text-align: left;
+    flex: 1;
+    padding-left: 5vw;
+
+    a {
+      color: white;
+      text-decoration: none;
+      text-decoration: dashed;
+    }
+  }
+
+  .Links {
+    a {
+      text-align: right;
+      text-decoration: none;
+      color: white;
+      margin-left: 1rem;
+    }
+
+    flex: 1;
+  }
+}
+
+.AppFooter {
+  background-color: #222;
+  padding: 1rem;
+  color: white;
+  /*text-align: left;*/
+}
+
+.AppCover {
+  background-color: #000;
+  .CoverImage {
+    .CoverBackground {
+      object-fit: cover;
+      width: 100%;
+      height: 90vh;
+      filter: blur(5px);
+      -webkit-user-drag: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .CoverCard {
+      background-color: #ffffffb3;
+      padding: 20px;
+      border-radius: 5px;
+
+      position: absolute;
+      top: 45%;
+      left: 25vw;
+      transform: translate(-50%, -50%);
+      color: black;
+      font-size: 3rem;
+      text-align: left;
+
+      max-width: 40vw;
+      min-width: 760px;
+
+      display: flex;
+      flex-direction: row;
+      
+      @media (max-width: 1500px) and (min-width: 801px) {
+        top: 50%;
+        left: 50%;
+        text-align: center;
+      }
+      
+      @media (max-width: 800px) {
+        top: 50%;
+        left: 50%;
+        text-align: center;
+        font-size: 2.5rem;
+        flex-direction: column;
+        min-width: 300px;
+      }
+
+      @media (max-height: 450px) {
+        top: 55%;
+        max-height: 225px;
+      }
+      
+      .CoverProfileImage {
+        flex: 1;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        @media (min-width: 801px)
+        {
+          margin-left: -35px;
+          margin-right: 15px;
+        }
+
+        
+        img {
+          border-radius: 5%;
+          width: 75%;
+          @media (max-height: 450px) {
+            max-height: 225px;
+            width: 225px;
+          }
+        }
+      }
+
+      .CoverText {
+        flex: 1;
+        
+        .CoverName {
+          margin-bottom: 25px;
+          margin-top: 25px;
+
+          @media (max-height: 450px) {
+            font-size: 2.5rem;
+          }
+        }
+        
+        .CoverDescription {
+          font-size: 1.75rem;
+  
+          @media (max-width: 800px) or (max-height: 450px) {
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.Skill {
+  display: flex;
+  justify-content: center;
+  .SkillName {
+    margin-right: 2rem;
+  }
+}
