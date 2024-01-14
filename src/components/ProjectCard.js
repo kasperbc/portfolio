@@ -1,22 +1,44 @@
-import { Card, CardOverflow } from "@mui/joy"
+import { AspectRatio, Card, Chip, CardContent, CardOverflow, IconButton, Typography } from "@mui/joy"
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import CodeIcon from '@mui/icons-material/Code';
+import GroupsIcon from '@mui/icons-material/Groups';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
-function CardText() {
+export default function ProjectCard({ name, type, image, description, link, year, engine, time, teamSize }) {
     return (
-        <div>Help</div>
-    )
-}
-
-export default function ProjectCard() {
-    return (
-        <Card variant="solid" sx={{ width:"50%"}}>
-            <CardOverflow>
-                <img src="https://source.unsplash.com/random" alt="random" />
-            </CardOverflow>
-            <CardText />
-            <CardText />
-            <CardText />
-            <CardText />
-            <CardText />
-        </Card>
+        <div className="ProjectCard">
+            <Card variant="solid" sx={{ width: "50%" }} className="Card">
+                <CardOverflow>
+                    <AspectRatio ratio="2">
+                        <img src={image} />
+                    </AspectRatio>
+                </CardOverflow>
+                <div className="ProjectContent">
+                    <div className="MainContent">
+                        <a className="ProjectName" href={link} target="_blank">{name}</a>
+                        <Chip className="ProjectType">{type}</Chip>
+                        <p className="ProjectDescription">{description}</p>
+                    </div>
+                    <div className="ProjectInfos">
+                        <div className="ProjectInfo">
+                            <CalendarMonthIcon titleAccess="Publish Year"/>
+                            <p>{year}</p>
+                        </div>
+                        <div className="ProjectInfo">
+                            <CodeIcon titleAccess="Engine"/>
+                            <p>{engine}</p>
+                        </div>
+                        <div className="ProjectInfo">
+                            <AccessTimeIcon titleAccess="Development Time"/>
+                            <p>{time}</p>
+                        </div>
+                        <div className="ProjectInfo">
+                            <GroupsIcon titleAccess="Team Size"/>
+                            <p>{teamSize}</p>
+                        </div>
+                    </div>
+                </div>
+            </Card>
+        </div>
     )
 }
