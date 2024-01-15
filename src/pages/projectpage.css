@@ -1,0 +1,40 @@
+body {
+    background-color: #eee;
+}
+
+.Cover {
+    .CoverImage {
+        background-color: #111;
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 60vh;
+            filter: blur(5px);
+            -webkit-user-drag: none;
+            user-select: none;
+            -webkit-user-select: none;      
+        }
+        .CoverText {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #eee;
+            font-size: 2.5rem;
+            text-shadow: 4px 4px 6px #000000;
+        }
+    }
+
+}
+
+.Content {
+    text-align: left;
+    margin-left: 8vw;
+    p {
+        font-size: large;
+        width: 70%;
+        @media (max-width: 500px) {
+            width: 90%;
+        }
+    }
+}

@@ -11,7 +11,7 @@ export default function ProjectShowcase() {
                     name="Epistasis"
                     description="A 3D scifi-horror game made by a team of 3rd year students."
                     image="https://img.itch.zone/aW1nLzEyMzM4MzQ0LnBuZw==/315x250%23c/mpNO0F.png"
-                    link="https://kasperbjorkgren.com"
+                    link="/epistasis"
                     type="Practical Training"
                     year="2023"
                     engine="Unity"
