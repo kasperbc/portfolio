@@ -1,3 +1,7 @@
+import MovieIcon from '@mui/icons-material/Movie';
+import BrushIcon from '@mui/icons-material/Brush';
+import LocalActivityIcon from '@mui/icons-material/LocalActivity';
+
 export default function AboutMe()
 {
     return (
@@ -11,11 +15,18 @@ export default function AboutMe()
             </div>
             <h3>My other hobbies include:</h3>
             <div className="AboutMeHobbies">
-                <p className="Hobby">Video Editing</p>
-                <p className="HobbySeperator">•</p>
-                <p className="Hobby">Art</p>
-                <p className="HobbySeperator">•</p>
-                <p className="Hobby">Event Organization</p>
+                <div className="Hobby">
+                    <MovieIcon className="HobbyIcon"/>
+                    <p className="Hobby">Video Editing</p>
+                </div>
+                <div className="Hobby">
+                    <BrushIcon className="HobbyIcon"/>
+                    <p className="Hobby">Art</p>
+                </div>
+                <div className="Hobby">
+                    <LocalActivityIcon className="HobbyIcon"/>
+                    <p className="Hobby">Event Organization</p>
+                </div>
             </div>
         </div>
     );

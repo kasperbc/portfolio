@@ -1,7 +1,7 @@
 export default function SkillShowcase()
 {
     return (
-        <div className="SkillShowcase">
+        <div className="SkillShowcase" id="skills">
             <h2>Skills & Technologies</h2>
             <div className="SkillShelves">
                 <div className="SkillShelf">
@@ -23,9 +23,9 @@ export default function SkillShowcase()
                     <Skill name="GitHub Copilot" level={0.7} />
                     <Skill name="Microsoft Word" level={0.6} />
                     <Skill name="Visual Studio Code" level={0.6}/>
-                    <Skill name="Visual Studio 2022" level={0.5}/>
-                    <Skill name="Adobe Photoshop" level={0.5} />
-                    <Skill name="WordPress" level={0.5}/>
+                    <Skill name="Visual Studio 2022" level={0.4}/>
+                    <Skill name="Adobe Photoshop" level={0.4} />
+                    <Skill name="Blender" level={0.35}/>
                     <Skill name="Adobe Premiere Pro" level={0.3}/>
                 </div>
             </div>
