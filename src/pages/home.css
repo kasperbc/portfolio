@@ -58,7 +58,7 @@
     }
     .CoverCard {
       background-color: #ffffffb3;
-      padding: 20px;
+      padding: 20px 30px 20px 20px;
       border-radius: 5px;
 
       position: absolute;
@@ -138,9 +138,9 @@
           }
 
           .CoverButtons {
-            button {
+            a {
               margin-right: 15px;
-              margin-top: 2rem;
+              margin-top: 1.5rem;
             }
           }
         }

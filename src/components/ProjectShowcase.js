@@ -1,6 +1,10 @@
 import ProjectCard from "./ProjectCard"
 import BloomingLoveImg from "../imgs/blooming-love.png"
 import ConflictOfWizardsImg from "../imgs/confict-of-wizards.png"
+import TheLastRevenantImg from "../imgs/the-last-revenant.png"
+import TheresHopeOnTheSurfaceImg from "../imgs/theres-hope-on-the-surface.png"
+import DescendFellaImg from "../imgs/descend-fella.png"
+import SuperMalarioBrosImg from "../imgs/super-malario-bros.png"
 
 export default function ProjectShowcase() {
     return (
@@ -21,7 +25,7 @@ export default function ProjectShowcase() {
                 <ProjectCard
                     name="The Last Revenant"
                     description="A 2D scifi-metroidvania where the main upgrade is a grappling hook."
-                    image="https://img.itch.zone/aW1hZ2UvMjQyMTY1Mi8xNDM1OTQzMi5wbmc=/250x600/fuyrIw.png"
+                    image={TheLastRevenantImg}
                     link="/the-last-revenant"
                     type="Game Jam"
                     year="2023"
@@ -43,7 +47,7 @@ export default function ProjectShowcase() {
                 <ProjectCard
                     name="Hope on the Surface"
                     description="A 2D platformer made by an international team."
-                    image="https://img.itch.zone/aW1nLzEzOTMyMDk5LnBuZw==/315x250%23c/dIjrqK.png"
+                    image={TheresHopeOnTheSurfaceImg}
                     link="/theres-hope-on-the-surface"
                     type="Game Jam"
                     year="2023"
@@ -54,7 +58,7 @@ export default function ProjectShowcase() {
                 <ProjectCard
                     name="Descend Fella"
                     description="A 3D arcade-style game about falling with an online leaderboard."
-                    image="https://img.itch.zone/aW1nLzEwMzU1NTE3LnBuZw==/315x250%23c/IMKYa9.png"
+                    image={DescendFellaImg}
                     link="/descend-fella"
                     type="Game Jam"
                     year="2022"
@@ -76,7 +80,7 @@ export default function ProjectShowcase() {
                 <ProjectCard
                     name="Super Malario Bros."
                     description="Clone of Super Mario Bros, also available on Android."
-                    image="https://img.itch.zone/aW1nLzM1MTU0ODQucG5n/315x250%23c/w%2FNB%2Fd.png"
+                    image={SuperMalarioBrosImg}
                     link="/super-malario-bros"
                     type="Personal Project"
                     year="2020"

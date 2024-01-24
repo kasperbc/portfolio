@@ -30,11 +30,15 @@ body {
 .Content {
     text-align: left;
     margin-left: 8vw;
+    margin-top: 2.5rem;
     p {
         font-size: large;
         width: 70%;
         @media (max-width: 500px) {
             width: 90%;
         }
+    }
+    h2 {
+        margin-top: 1.5rem;
     }
 }

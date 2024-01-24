@@ -1,5 +1,6 @@
 import Header from "../../components/Header";
 import ProjectPage from "../../components/ProjectPage";
+import TheresHopeOnTheSurfaceImg from "../../imgs/theres-hope-on-the-surface.png";
 
 export default function HopeOnTheSurface() {
     return (
@@ -19,7 +20,7 @@ export default function HopeOnTheSurface() {
                 {"I was one of two programmers for this game. I created the destructible terrain system and collaborated with the other programmer to create " +
                 "other mechanics. I also created some of the art assets."
                 }
-                gameBanner = "https://img.itch.zone/aW1nLzEzOTMyMDk5LnBuZw==/315x250%23c/dIjrqK.png"
+                gameBanner = {TheresHopeOnTheSurfaceImg}
                 playLink = "https://kekis.itch.io/there-is-hope-on-the-surface"
                 playLinkText="Download"
                 sourceLink="https://github.com/Emiliontti/EXPAGameJamG3"

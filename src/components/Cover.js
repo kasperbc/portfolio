@@ -18,7 +18,7 @@ export default function Cover() {
                         <div className="CoverDescription">
                             I am a game development student in Jyväskylä, Finland. Welcome to my portfolio!
                             <div className="CoverButtons">
-                                <Button size="lg" variant="solid" startDecorator={<FaDownload />}>Download CV</Button>
+                                <Button size="lg" variant="solid" startDecorator={<FaDownload />} component="a" href="https://kasperbjorkgren.com/Kasper_Bjorkgren_CV_En.pdf" target="_blank">Download CV</Button>
                                 <Button size="lg" variant="solid" style={{ top:"-2px" }} component="a" href="#contact">Contact</Button>
                             </div>
                         </div>

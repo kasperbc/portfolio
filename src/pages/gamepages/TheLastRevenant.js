@@ -1,5 +1,6 @@
 import Header from "../../components/Header";
 import ProjectPage from "../../components/ProjectPage";
+import TheLastRevenantImg from "../../imgs/the-last-revenant.png";
 
 export default function TheLastRevenant() {
     return (
@@ -24,7 +25,7 @@ export default function TheLastRevenant() {
                 myRole=
                 { "I was the programmer and co-designer of this project, so my time was mostly spent on programming the entire game. " +
                 "In addition, I also did the UI, some of the 2D sprites and most of the level layouts." }
-                gameBanner = "https://img.itch.zone/aW1hZ2UvMjQyMTY1Mi8xNDM1OTQzMi5wbmc=/250x600/fuyrIw.png"
+                gameBanner = {TheLastRevenantImg}
                 playLink = "https://kekis.itch.io/the-last-revenant"
                 playLinkText="Itch.io"
                 sourceLink="https://github.com/kasperbc/TheLastRevenant"

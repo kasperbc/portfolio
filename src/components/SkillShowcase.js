@@ -13,20 +13,22 @@ export default function SkillShowcase()
                     <Skill name="CSS" level={0.5} />
                     <Skill name="Java" level={0.5} />
                     <Skill name="React" level={0.25} />
+                    <Skill name="Typescript" level={0.2} />
                     <Skill name="MySQL" level={0.2} />
                     <Skill name="Kotlin" level={0.1} />
                 </div>
                 <div className="SkillShelf">
                     <Skill name="Unity 2D / 3D" level={1} />
                     <Skill name="GitHub" level={0.8} />
-                    <Skill name="Microsoft Excel" level={0.7} />
                     <Skill name="GitHub Copilot" level={0.7} />
-                    <Skill name="Microsoft Word" level={0.6} />
-                    <Skill name="Visual Studio Code" level={0.6}/>
+                    <Skill name="Microsoft Excel" level={0.65} />
+                    <Skill name="Microsoft Word" level={0.5} />
+                    <Skill name="Visual Studio Code" level={0.5}/>
                     <Skill name="Visual Studio 2022" level={0.4}/>
                     <Skill name="Adobe Photoshop" level={0.4} />
                     <Skill name="Blender" level={0.35}/>
                     <Skill name="Adobe Premiere Pro" level={0.3}/>
+                    <Skill name="Adobe Illustrator" level={0.15}/>
                 </div>
             </div>
         </div>
