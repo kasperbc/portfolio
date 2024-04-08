@@ -1,0 +1,23 @@
+Epistasis:
+
+Name: Epistasis
+Description: 40-minute first-person horror experience
+What I did:
+* Player-focused game mechanics, such as movement & items
+* Immersive UI implementations
+* Vast majority of the audio implementation
+Links:
+* https://128games.itch.io/epistasis
+
+
+The Last Revenant:
+
+Name: The Last Revenant
+Description: Movement-focused 2D metroidvania
+What I did:
+* Programmed the entire game
+* Created a node-based enemy AI system
+* Set up useful tools for the level designer
+Links:
+* https://kekis.itch.io/the-last-revenant
+* https://github.com/kasperbc/TheLastRevenant

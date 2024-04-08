@@ -1,0 +1,35 @@
+.contact {
+    background-color: #eee;
+    border: #ccc 5px solid;
+    max-width: 400px;
+}
+
+.aboutme {
+    background-color: gray;
+}
+
+.gamecard {
+    background-color: #333;
+    width: 95%;
+    overflow: hidden;
+    margin-bottom: 50px;
+    .gamecardimg {
+        object-fit: none;
+        @media screen and (max-width: 1200px){
+            max-height: 100px;
+        }
+        @media screen and (min-width: 1200px){
+            max-height: 290px;          
+        }
+        transition-duration: 100ms;
+        transition-timing-function: ease-out;
+    }
+    .gamecardimg:hover {
+        transform: scale(1.1);
+    }
+
+    .gamecardcontent
+    {
+        margin-left: 0px;
+    }
+}
