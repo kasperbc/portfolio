@@ -1,0 +1,129 @@
+@import "~bootstrap/scss/bootstrap";
+
+// Variables
+$dark-0: #0c0c0c;
+$dark-1: #1c1c1c;
+$dark-2: #2c2c2c;
+$dark-3: #353535;
+$dark-4: #717171;
+$primary-1: #1B4242;
+$primary-2: #38675F;
+$primary-3: #458075;
+$primary-4: #61b3a5;
+$text: #e7e7e7;
+
+body {
+    background-color: $dark-1;
+    color: $text;
+    font-family: 'Noto Sans', serif;
+}
+
+.gamedisplay {
+    background-color: $dark-1;
+}
+
+.contact {
+    background-color: $dark-3;
+    // border: $dark-4 1px solid;
+    max-width: 400px;
+    box-shadow: 0px 0px 5px $dark-0;
+
+    border: 2px solid $primary-2;
+
+    transition-duration: 100ms;
+    transition-timing-function: ease-out;
+}
+.contact:hover {
+    box-shadow: 0px 0px 7px $dark-0;
+}
+
+.contactbar {
+    background-color: $dark-2;
+}
+
+.aboutme {
+    background-color: $dark-2;
+    color: $white;
+
+    box-shadow: 0px 0px 10px $dark-0;
+    z-index: 1;
+
+    transition-duration: 100ms;
+    transition-property: ease-out;
+    img {
+        box-shadow: 0px 0px 10px $dark-0;
+    }
+}
+.aboutme:hover {
+    box-shadow: 0px 0px 14px $dark-0;
+}
+
+.gamecard {
+    background-color: $dark-2;
+    width: 95%;
+    overflow: hidden;
+    margin-bottom: 50px;
+
+    box-shadow: 0px 0px 10px $dark-0;
+
+    .gamecardimg {
+        object-fit: none;
+        @media screen and (max-width: 1200px){
+            max-height: 100px;
+        }
+        @media screen and (min-width: 1200px){
+            max-height: 290px;          
+        }
+        transition-duration: 100ms;
+        transition-timing-function: ease-out;
+    }
+
+    .gamecardcontent
+    {
+        @media screen and (max-width: 1200px){
+            padding: 0px 20px 0px 20px;
+
+            border-style: solid;
+            border-width: 10px 0px 0px 0px;
+            border-color: $primary-3;
+        }
+        @media screen and (min-width: 1200px){
+            padding-left: 20px;
+
+            border-style: solid;
+            border-width: 0px 0px 0px 7px;
+            border-color: $primary-3;
+        }
+    }
+
+    .gametitle {
+        margin-bottom: 0px;
+    }
+
+    .gamedesc {
+        opacity: 0.6;
+    }
+}
+.gamecard:hover {
+    box-shadow: 0px 0px 14px $dark-0;
+}
+
+// awful
+.link-button {
+    background-color: $primary-4;
+    border-color: $primary-3;
+    color: $primary-1;
+}
+.link-button:hover {
+    background-color: $primary-3;
+}
+.link-button:active {
+    background-color: $primary-3;
+}
+.link-button:focus {
+    background-color: $primary-3;
+}
+
+a {
+    color: $primary-4;
+}
