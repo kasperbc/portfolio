@@ -1,0 +1,32 @@
+<!-- ## Highlight - Options system
+--- -->
+
+
+
+<!-- ## What could've gone better - Player movement script
+---
+
+Something I could have put more care into was the `PlayerMovement.cs` script, which as the name implies, was supposed be the core player controller.
+
+Initially, the goal was to have *something* functional to create a prototype. However, I kept using it and building on top of it throughout the rest of the project.
+
+Because the script was initally rushed, it eventually snowballed into a sort of player mega-script that handled a lot more than that, including things like interactions, enemy detection and UI.
+
+I think the Update function shows this pretty well.
+```csharp
+    void Update()
+    {
+        MovePlayer(); // walking
+        ApplyGravity();
+        PlayerInteraction(); // pick-ups etc.
+        Crouch();
+        FlashlightUpdate();
+        SendEnemySound(); // enemy detection system
+        MultiToolUpdate(); // seperate UI
+        UpdateCameraAnimation();
+    }
+```
+
+While I don't think this was a massive blunder, as it didn't end up slowing down the development too much, developing the features as multiple parts instead of adding it all onto this would've at least improved code readibility and such.
+
+In the end, this was a good lesson on thinking ahead in my code structures. -->

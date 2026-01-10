@@ -1,0 +1,152 @@
+baseurl = "https://www.kasperbjorkgren.com/"
+DefaultContentLanguage = "en"
+title = "Kasper Björkgren"
+theme = "beautifulhugo"
+pygmentsStyle = "trac"
+pygmentsUseClasses = true
+pygmentsCodeFences = true
+pygmentsCodefencesGuessSyntax = true
+disableKinds = ['sitemap', 'taxonomy']
+#pygmentsUseClassic = true
+#pygmentOptions = "linenos=inline"
+
+[Services]
+  [Services.Disqus]
+    # Shortname = "XXX"
+  [Services.googleAnalytics]
+    # id = "XXX"
+
+[security]
+  enableInlineShortcodes = true
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[Params]
+  homeTitle = "Kasper Björkgren" # Set a different text for the header on the home page
+  subtitle="Gameplay programmer"
+  # mainSections = ["post","posts"]
+  # logo = "img/kb-icon.png" # Expecting square dimensions
+  favicon = "img/favicon.ico"
+  dateFormat = "January 2, 2006"
+  commit = false
+  rss = false
+  comments = false
+  readingTime = true
+  wordCount = true
+  useHLJS = true
+  socialShare = false
+  delayDisqus = true
+  showRelatedPosts = false
+#  cusdisID = "XXX" # Get your App id from cusdis.com
+#  hideAuthor = true
+#  gcse = "012345678901234567890:abcdefghijk" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
+#  disclaimerText = "The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way."
+
+[[Params.bigimg]]
+  src = "img/kb-demo-reel.webp"
+
+[Params.author]
+  # Set only your "username" for default hosts and full URLs otherwise (e.g., "https://MyGitLab.org/username")
+  name = "Kasper Björkgren"
+  # website = "yourwebsite.com"
+  email = "kasper.bjorkgren@gmail.com"
+  # facebook = "username"
+  github = "kasperbc"
+  # gitlab = "username"
+  # bitbucket = "username"
+  # twitter = "username"
+  # reddit = "username"
+  linkedin = "kasper-björkgren-25b279279"
+  # xing = "username"
+  # stackoverflow = "users/XXXXXXX/username"
+  # snapchat = "username"
+  instagram = "kasper.b.1"
+  # youtube = "user/username" # or channel/channelname
+  # soundcloud = "username"
+  # spotify = "username"
+  # bandcamp = "username"
+  itchio = "https://kekis.itch.io"
+  steam = "https://store.steampowered.com/app/4078290/Tackle_Box_The_First_Catch/"
+  # vk = "username"
+  # paypal = "username"
+  # telegram = "username"
+  # 500px = "username"
+  # codepen = "username"
+  # mastodon = "url"
+  # kaggle = "username"
+  # weibo = "username"
+  # slack = "username"
+  # medium = "username"
+  # discord = "invite code (https://discord.gg/XXXXXXX)"
+  # strava = "userid"
+  # lastfm = "username"
+  # bluesky = "username"
+
+[markup]
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 2
+
+[[menu.main]]
+    name = "Home"
+    url = ""
+    weight = 1
+
+[[menu.main]]
+    name = "About"
+    url = "#about"
+    weight = 99
+
+[[menu.main]]
+    name = "Contact"
+    url = "contact"
+    weight = 100
+
+[[menu.main]]
+    identifier = "highlights"
+    name = "Highlights"
+    url = "#highlights"
+    weight = 3
+
+[[menu.main]]
+    parent = "highlights"
+    name = "Tackle Box (2025)"
+    url = "game/tackle-box"
+    weight = 1
+
+[[menu.main]]
+    parent = "highlights"
+    name = "Epistasis (2023)"
+    url = "game/epistasis"
+    weight = 2
+
+# [[menu.main]]
+#     name = "Games"
+#     url = "games"
+#     weight = 5
+
+
+# [[menu.main]]
+#     identifier = "samples"
+#     name = "Samples"
+#     weight = 2
+
+# [[menu.main]]
+#     parent = "samples"
+#     name = "Big Image Sample"
+#     url = "post/2017-03-07-bigimg-sample"
+#     weight = 1
+
+# [[menu.main]]
+#     parent = "samples"
+#     name = "Math Sample"
+#     url = "post/2017-03-05-math-sample"
+#     weight = 2
+
+# [[menu.main]]
+#     parent = "samples"
+#     name = "Code Sample"
+#     url = "post/2016-03-08-code-sample"
+#     weight = 3
