@@ -27,9 +27,9 @@ We worked on the game as a team of 7 people from August 2025 to December 2025 as
 ## My contributions
 ---
 ### Gameplay
-* Created a **robust and easily expandable** system for handling different phases of gameplay (e.g. moving from fishing to fighting) using **Unity's Behavior Graphs**.
+* Created a **robust and expandable** system for handling different phases of gameplay (e.g. moving from fishing to fighting) using **Unity's Behavior Graphs**.
 * **Collaborated with designers** to implement fighting system.
-* Created fishing minigame by **iterating** over **several prototypes**.
+* Created fishing minigame by **iterating** over several prototypes.
 * Worked with 3D artist to create an **efficient workflow** to implement 12+ fish enemies.
     * Got it down to ~15 minutes to implement a new fish
 * Created cutscenes using **Unity's Timeline System**.
@@ -53,6 +53,192 @@ We worked on the game as a team of 7 people from August 2025 to December 2025 as
 ### Publishing
 * Worked with artists and writers for the content of the Steam store page.
 * Created and set up Mac version of the game on Steam.
+
+
+## Highlight: Fishing minigame
+
+---
+
+### The prototyping process
+
+In the first stages of development, there was a lot of discussion about the game's fishing minigame. 
+
+We knew that we were going to have one, but we hadn't really figured out the specifics of how it should work, and 
+decided that the best way to figure it out was to just prototype something playable and go from there.
+
+I was responsible for this and so, I got to work.
+
+#### 1st prototype
+
+<img src="/img/tacklebox-fishingproto1.webp" class="figure"/>
+
+After around a day, I had the first prototype ready.
+
+For it, I had a few requirements to work with:
+* The game had to have a mechanic based on draining the fish's energy to catch it.
+* It had to last around 15 seconds.
+* It had to be playable with a mouse and a controller.
+
+The prototype was quite simple. You could pull the fish in any direction with the mouse, but pulling the fish against it's movement (indicated by the arrow) lowered it's energy.
+
+The control scheme could also work with a control stick, although it would not be implemented for a while.
+
+Now, if you're finding it difficult to make sense of what's happening on the video above, then you have spotted the problem.
+
+It was quickly apparent that the gameplay and objective was not very clear, and not really very fun when you figured it out either.
+
+#### 2nd prototype
+
+<img src="/img/tacklebox-fishingproto2.webp" class="figure"/>
+
+With this, I got back to the drawing board and developed the second prototype.
+
+This version is a lot more rhythm game-like, where groups of arrows spawn one by one and the player needs to position the mouse on them in time. The arrows would spawn roughly in the opposite direction of where the fish is moving, and positioning the mouse correctly would pull the fish and drain it's energy.
+
+While this version was a lot more clear and generally recieved better feedback, another problem had presented itself. It didn't really feel like fishing.
+
+I figured that this was mainly because of the nudge-y feel, as well as the fact that you could pull the in any direction, including away from the player.
+
+Now, the game's focus wasn't on being a realistic fishing simulator, but I felt like I could come up with a system where there doesn't have to be a choice between fun and believability, so I decided to try again.
+
+#### 3rd prototype
+
+<img src="/img/tacklebox-fishingproto3.webp" class="figure"/>
+
+In some ways, the 3rd prototype could be seen as a re-do of the first one.
+
+The gameplay is once again based on an action of constant pulling, but I restricted the playable angle from 360° to a much smaller slice and used an overlay UI to visualize which angle the player was pulling and needed to pull. In fact, the overlay UI was the only part I did for the initial version of this.
+
+It got recieved well enough that I figured it would be a good base for the final version.
+
+#### Final developments
+<img src="/img/tacklebox-fishingfinal1.webp" class="figure"/>
+
+Afterwards, there was work in polishing the minigame, tweaking and iterating on the mechanics and implementing visual assets. At this point, the team's other programmer occasionally implemented and worked on the minigame's codebase as well.
+
+Overall, I'm glad with how this process went, and I think I learned a good amount because of it. Of course, the result probably could have been even better, but at some point the time restraints kicked in and I had to prioritize other things.
+
+### My implementations in the final version 
+
+
+#### Input angle
+
+*something here*
+
+```csharp
+// in FishingPhase.cs
+float inputDir = 
+    InputManager.UsingGamepad
+    ? gamepadPositionInput.ReadValue<Vector2>()
+    : Utils.GetMouseDirection(positionInput.ReadValue<Vector2>());
+
+if (InputManager.UsingGamepad)
+{
+    float stickAngle = Vector2.SignedAngle(Vector2.left, inputDir);
+    float stickAngle01 = Mathf.InverseLerp(-90, 90, stickAngle);
+
+    float modifiedAngle = Mathf.Lerp(-baseAngleRadius / 2, baseAngleRadius / 2, stickAngle01) * Mathf.Deg2Rad;
+    inputDir = new Vector2(-Mathf.Cos(modifiedAngle), -Mathf.Sin(modifiedAngle));
+}
+
+float inputAngle = Vector2.SignedAngle(Vector2.up, inputDir);
+
+holdPhaseInput.TargetAngle = holdPhaseInput.GetAngleClamped(inputAngle - 90f);
+```
+
+Getting the mouse direction was in a seperate script, as I thought it would be useful in case I needed it anywhere else (I did not)
+
+```csharp
+// in Utils.cs
+
+public static Vector2 GetMouseDirection(Vector2 mousePosition)
+{
+    Vector2 mouseDir = mousePosition;
+    mouseDir.x -= Screen.width / 2;
+    mouseDir.y -= Screen.height / 2;
+    return mouseDir.normalized;
+}
+```
+
+```csharp
+// in FishingInput.cs
+
+void Update()
+{
+    float dt = Time.deltaTime * timeScale;
+    
+    float angleDifference = Mathf.DeltaAngle(CurrentAngle, TargetAngle);
+    float targetVelocity = Mathf.Clamp(angleDifference / (maxSpeed / slowdownModifier), -1, 1) * maxSpeed;
+
+    CurrentVelocity = Mathf.MoveTowards(CurrentVelocity, targetVelocity,
+        acceleration * dt);
+
+    CurrentAngle += CurrentVelocity * dt;
+    CurrentAngle %= 360;
+}
+```
+
+This script is pretty much just trying to match a single float by accelerating towards it.
+
+The acceleration then has an overshooting effect when the target is moved (player is moving the mouse/stick) too fast. I did it this way to give the fishing rod a feeling of weight.
+
+<img src="/img/tacklebox-fishingfinal2.webp" class="figure"/>
+
+Afterwards, the input script's angle is used to display the visuals and such.
+```csharp
+// in FishingPhase.cs
+inputSpriteParent.eulerAngles = new Vector3(0, 0, holdPhaseInput.CurrentAngle);
+```
+
+#### Target angle
+
+In the game, the player is trying to match their fishing rod to the bobber, which is also constantly moving back and forth.
+
+I did this using the `InputAngle` script, the same one used for player input.
+
+```csharp
+void UpdateTargetAngle()
+{
+    bool _targetClockwise = holdPhaseTargetInput.TargetAngle < holdPhaseTargetInput.CurrentAngle;
+    if (_targetClockwise != targetInClockwiseDirection || Mathf.Abs(holdPhaseTargetInput.CurrentVelocity) < 1)
+    {
+        float angleRange = (holdPhaseTargetInput.angleRadius * 0.5f) / 2;
+        holdPhaseTargetInput.TargetAngle = Random.Range(-angleRange, angleRange);
+        targetInClockwiseDirection = _targetClockwise;
+    }
+}
+```
+
+The script simply sets a randomizes a target angle, and re-randomizes it whenever the bobber passes over the current one.
+
+I'm quite happy with the solution, as it was very fast to implement while still allowing the player and target parameters to be adjusted seperately.
+
+#### Energy and line durability
+
+In order to win the fishing minigame, the player has to drain all of the fish's energy.
+
+This is done by calculating a score from the angle difference between the fishing rod's and the bobber's current angles, and perpetually applying it to reduce the fish's energy.
+
+```csharp
+// in FishingPhase.cs
+float angleDifference = Mathf.Abs(Mathf.DeltaAngle(holdPhaseInput.CurrentAngle, targetAngle));
+
+float score = Mathf.InverseLerp(maxAngleDifference, minAngleDifference, angleDifference);
+score = score * score * score;
+
+fishEnergy -= score / catchTime * GameManager.instance.GetEffectValue("reelspeed") * scaledDeltaTime;
+fishEnergy = Mathf.Clamp01(fishEnergy);
+```
+
+Once the energy is low enough, the player can yank the fish out of the water.
+
+Worth nothing that this applies only if the player is holding down left click, but in hindsight, this didn't serve much purpose and pretty much just lead to the players being confused in the beginning.
+
+The same "score" is used to reduce the player's line durability, with it breaking faster if the player is further off from the target. If that reaches 0, the player loses.
+```csharp
+// in FishingPhase.cs
+lineDurability -= scaledDeltaTime / lineBreakDuration * (1 - score);
+```
 
 ## What I learned
 ---

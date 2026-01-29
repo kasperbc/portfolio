@@ -17,7 +17,7 @@
     >}}
 Worked with a team of artists & designers as the main programmer/implementer to create a unique fishing game.
 
-Highlights include an intuitive "gameplay-phase" system, *something else* and being part of a very iterative development cycle.
+Highlights include an intuitive "gameplay-phase" system and being part of a very iterative development cycle.
 {{</gamecard>}}
 
 {{<gamecard name="Epistasis"
