@@ -986,7 +986,7 @@ h4.see-also {
 }
 
 .highlight:hover .copyCodeButton {
-  display: block;
+  display: none;
 }
 
 .copyCodeButton:hover {

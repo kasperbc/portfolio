@@ -28,10 +28,10 @@ We worked on the game as a team of 7 people from August 2025 to December 2025 as
 ---
 ### Gameplay
 * Created a **robust and expandable** system for handling different phases of gameplay (e.g. moving from fishing to fighting) using **Unity's Behavior Graphs**.
-* **Collaborated with designers** to implement fighting system.
+* **Collaborated with designers** to implement the fighting system.
 * Created fishing minigame by **iterating** over several prototypes.
-* Worked with 3D artist to create an **efficient workflow** to implement 12+ fish enemies.
-    * Got it down to ~15 minutes to implement a new fish
+* Worked with a 3D artist to create an **efficient workflow** to implement 12+ fish enemies.
+    * Got it down to ~15 minutes to implement a new one
 * Created cutscenes using **Unity's Timeline System**.
 * Implemented 22 Steam Achievements using the **Steamworks API**.
 
@@ -41,8 +41,8 @@ We worked on the game as a team of 7 people from August 2025 to December 2025 as
 * Created a simple dialogue system using **Scriptable Objects**.
 
 ### Testing
-* Actively participated in planning, setting up and executing on testing sessions, based on my experiences with [Epistasis](/game/epistasis).
-* Observed testers, analyzed feedback and compiled it to a consise list of issues.
+* Actively participated in planning, setting up and executing testing sessions, based on my experiences with [Epistasis](/game/epistasis).
+* Observed testers, analyzed feedback and compiled it to a concise list of issues.
 
 ### Workflow
 * Maintained an **implementation plan** and worked with the visual and sound team to keep them up to date on the necessary assets.
@@ -79,13 +79,13 @@ For it, I had a few requirements to work with:
 * It had to last around 15 seconds.
 * It had to be playable with a mouse and a controller.
 
-The prototype was quite simple. You could pull the fish in any direction with the mouse, but pulling the fish against it's movement (indicated by the arrow) lowered it's energy.
+The prototype was quite simple. You could pull the fish in any direction with the mouse, but pulling the fish against its movement (indicated by the arrow) lowered its energy.
 
 The control scheme could also work with a control stick, although it would not be implemented for a while.
 
-Now, if you're finding it difficult to make sense of what's happening on the video above, then you have spotted the problem.
+Now, if you're finding it difficult to make sense of what's happening in the video above, then you have spotted the problem.
 
-It was quickly apparent that the gameplay and objective was not very clear, and not really very fun when you figured it out either.
+It was quickly apparent that the gameplay and objective were not very clear, and not really very fun when you figured it out either.
 
 #### 2nd prototype
 
@@ -93,11 +93,11 @@ It was quickly apparent that the gameplay and objective was not very clear, and 
 
 With this, I got back to the drawing board and developed the second prototype.
 
-This version is a lot more rhythm game-like, where groups of arrows spawn one by one and the player needs to position the mouse on them in time. The arrows would spawn roughly in the opposite direction of where the fish is moving, and positioning the mouse correctly would pull the fish and drain it's energy.
+This version is a lot more rhythm game-like, where groups of arrows spawn one by one and the player needs to position the mouse on them in time. The arrows would spawn roughly in the opposite direction of where the fish is moving, and positioning the mouse correctly would pull the fish and drain itss energy.
 
-While this version was a lot more clear and generally recieved better feedback, another problem had presented itself. It didn't really feel like fishing.
+While this version was a lot more clear and generally received better feedback, another problem had presented itself. It didn't really feel like fishing.
 
-I figured that this was mainly because of the nudge-y feel, as well as the fact that you could pull the in any direction, including away from the player.
+I figured that this was mainly because of the nudge-y feel, as well as the fact that you could pull the fish in any direction, including away from the player.
 
 Now, the game's focus wasn't on being a realistic fishing simulator, but I felt like I could come up with a system where there doesn't have to be a choice between fun and believability, so I decided to try again.
 
@@ -109,21 +109,26 @@ In some ways, the 3rd prototype could be seen as a re-do of the first one.
 
 The gameplay is once again based on an action of constant pulling, but I restricted the playable angle from 360° to a much smaller slice and used an overlay UI to visualize which angle the player was pulling and needed to pull. In fact, the overlay UI was the only part I did for the initial version of this.
 
-It got recieved well enough that I figured it would be a good base for the final version.
+It got received well enough that I figured it would be a good base for the final version.
 
 #### Final developments
 <img src="/img/tacklebox-fishingfinal1.webp" class="figure"/>
 
 Afterwards, there was work in polishing the minigame, tweaking and iterating on the mechanics and implementing visual assets. At this point, the team's other programmer occasionally implemented and worked on the minigame's codebase as well.
 
-Overall, I'm glad with how this process went, and I think I learned a good amount because of it. Of course, the result probably could have been even better, but at some point the time restraints kicked in and I had to prioritize other things.
+Overall, I'm glad about how this process went, and I think I learned a good amount because of it. Of course, the result probably could have been even better, but at some point the time restraints kicked in and I had to prioritize other things.
 
-### My implementations in the final version 
+### Code overview of the final version 
 
 
 #### Input angle
 
-*something here*
+In the fishing minigame, the player must catch a fish by draining its energy.
+
+To do this, the player must keep their fishing rod in line with the bobber, which is controlled by the angle of the mouse from the screen's center
+(or the control stick).
+
+First, this angle is calculated.
 
 ```csharp
 // in FishingPhase.cs
@@ -146,19 +151,9 @@ float inputAngle = Vector2.SignedAngle(Vector2.up, inputDir);
 holdPhaseInput.TargetAngle = holdPhaseInput.GetAngleClamped(inputAngle - 90f);
 ```
 
-Getting the mouse direction was in a seperate script, as I thought it would be useful in case I needed it anywhere else (I did not)
+There are a few things going on here. While the mouse angle is quite straightforward, we found that playing with such a narrow angle wasn't too much fun on a control stick. So, the angle is modified to be a bit wider, so that pushing straight up on the stick goes to the topmost point of the playable area.
 
-```csharp
-// in Utils.cs
-
-public static Vector2 GetMouseDirection(Vector2 mousePosition)
-{
-    Vector2 mouseDir = mousePosition;
-    mouseDir.x -= Screen.width / 2;
-    mouseDir.y -= Screen.height / 2;
-    return mouseDir.normalized;
-}
-```
+The input is then passed to the `FishingInput` script as the `TargetAngle`, which the script's `CurrentAngle` will try to match over time.
 
 ```csharp
 // in FishingInput.cs
@@ -178,9 +173,9 @@ void Update()
 }
 ```
 
-This script is pretty much just trying to match a single float by accelerating towards it.
+It does this by having parameters for acceleration and velocity, which are applied to `CurrentAngle`. Just doing this had an effect of the angle constantly "bouncing" back and forth, so I had to add some friction using another parameter.
 
-The acceleration then has an overshooting effect when the target is moved (player is moving the mouse/stick) too fast. I did it this way to give the fishing rod a feeling of weight.
+In-game, this then has an overshooting effect only when the target is moved (player is moving the mouse/stick) too fast. The idea was to give the fishing rod a feeling of weight.
 
 <img src="/img/tacklebox-fishingfinal2.webp" class="figure"/>
 
@@ -209,9 +204,9 @@ void UpdateTargetAngle()
 }
 ```
 
-The script simply sets a randomizes a target angle, and re-randomizes it whenever the bobber passes over the current one.
+The script simply randomizes a target angle, and re-randomizes it whenever the bobber passes over the current one.
 
-I'm quite happy with the solution, as it was very fast to implement while still allowing the player and target parameters to be adjusted seperately.
+I'm quite happy with the solution, as it was very fast to implement while still allowing the player and target parameters to be adjusted separately.
 
 #### Energy and line durability
 
@@ -232,7 +227,7 @@ fishEnergy = Mathf.Clamp01(fishEnergy);
 
 Once the energy is low enough, the player can yank the fish out of the water.
 
-Worth nothing that this applies only if the player is holding down left click, but in hindsight, this didn't serve much purpose and pretty much just lead to the players being confused in the beginning.
+Worth noting that this applies only if the player is holding down left click, but in hindsight, this didn't serve much purpose and pretty much just led to players being confused.
 
 The same "score" is used to reduce the player's line durability, with it breaking faster if the player is further off from the target. If that reaches 0, the player loses.
 ```csharp
@@ -242,12 +237,8 @@ lineDurability -= scaledDeltaTime / lineBreakDuration * (1 - score);
 
 ## What I learned
 ---
-This project, I learned most about making a new type of game and working with a team of artists.
+Overall, I learned most about making a new type of game and working with a team of artists. Its fragmented gameplay loop was interesting to work with and it got me to approach the development in a way that I hadn't before. It got me to think of it much more in terms of systems and animations, as well as having me use parts of Unity that I wouldn't have touched otherwise.
 
-Developing this kind of game was also new to me in it's fragmented gameplay loop, with it constantly jumping from one kind of game to another. This forced me to approach it's development in a new way and learn new systems and techniques.
-
-Through this, I learned more about Unity's toolset, like the Timeline system and Behavior Graphs (although I probably didn't use it as exactly intended).
-
-Part of the project was to publish the game on Steam, so I got some valuable experience of figuring that out and implementing features of the Steamworks API in Unity.
+Part of the project was to publish the game on Steam as well, so I got some valuable experience of figuring that out and implementing features of the Steamworks API in Unity.
 
 <a href="https://github.com/attemptedbattery/tackle-box" role="button" class="btn btn-primary btn-lg btn-block"><span class="fa fab fa-xl fa-github"></span> View source</a>
