@@ -1,7 +1,7 @@
 ---
 date: '2025-12-12'
 draft: false
-title: 'Tackle Box: The First Catch (2025)'
+title: 'Tackle Box (2025)'
 bigimg: [{src: "/img/tacklebox.jpg"}]
 ---
 

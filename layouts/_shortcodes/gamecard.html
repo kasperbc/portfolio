@@ -32,10 +32,19 @@
     }
 </style>
 <div class="game-card">
-    <a href="{{ .Get "pagelink" }}"><img src={{ .Get "image" }} class="game-card-image"/></a>
+    {{ if .Get "pagelink"}}<a href="{{ .Get "pagelink" }}">{{ end }}
+    <img src={{ .Get "image" }} class="game-card-image"/>
+    {{ if .Get "pagelink"}}</a>{{ end }}
     <div class="game-card-text">
         <div class="game-card-header" style="margin-bottom: 2rem;">
-            <a href="{{ .Get "pagelink" }}"><h3><span class="fa-{{ .Get "storeicon" }} fa-lg fab"></span>{{ .Get "name" }}</h3></a>
+            {{ if .Get "pagelink" }}<a href="{{ .Get "pagelink" }}">{{end}}
+            <h3>
+                {{if .Get "storeicon" }}
+                    <span class="fa-{{ .Get "storeicon" }} fa-lg fab"></span>
+                {{ end }}
+                {{ .Get "name" }}
+            </h3>
+            {{ if .Get "pagelink" }}</a>{{end}}
         </div>
         {{ .Inner | .Page.RenderString }}
         <div class="game-card-details" style="margin-top: 2rem;">

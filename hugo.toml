@@ -94,15 +94,6 @@ disableKinds = ['sitemap', 'taxonomy']
     url = ""
     weight = 1
 
-[[menu.main]]
-    name = "About"
-    url = "#about"
-    weight = 99
-
-[[menu.main]]
-    name = "Contact"
-    url = "contact"
-    weight = 100
 
 [[menu.main]]
     identifier = "highlights"
@@ -122,10 +113,20 @@ disableKinds = ['sitemap', 'taxonomy']
     url = "game/epistasis"
     weight = 2
 
-# [[menu.main]]
-#     name = "Games"
-#     url = "games"
-#     weight = 5
+[[menu.main]]
+    name = "About"
+    url = "#about"
+    weight = 99
+
+[[menu.main]]
+    name = "Contact"
+    url = "contact"
+    weight = 100
+
+[[menu.main]]
+    name = "Games"
+    url = "games"
+    weight = 5
 
 
 # [[menu.main]]

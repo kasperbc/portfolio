@@ -3,7 +3,7 @@
 
 ## Highlights {.centerMe}
 ---
-<div class="centerMe">Here are the biggest things I've worked on so far!</div>
+<div class="centerMe">Here are the biggest games I've worked on so far!</div>
 <br>
 
 {{<gamecard name="Tackle Box: The First Catch"
@@ -34,7 +34,7 @@ Worked in a team of programmers to create a sci-fi horror game.
 Contributions include the player interaction systems and upgrading overlay-UI puzzles to diegetic ones.
 {{</gamecard>}}
 
-<!-- <a href="/games" role=button class="btn btn-primary btn-block btn-lg">See more games</a> -->
+<a href="/games" role=button class="btn btn-primary btn-block btn-lg"><span class="fa-solid fa-gamepad"></span> See all games</a>
 
 ## About {.centerMe}
 ---

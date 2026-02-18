@@ -1,0 +1,62 @@
+<style>
+    .game-card-sm {
+        background-color: #f5f5f5;
+        margin-bottom: 3rem;
+        border-radius: 20px;
+        box-shadow: 5px 5px 20px #bbb;
+        display: flex;
+        .game-card-image-sm {
+            object-fit:cover;
+            overflow: hidden;
+            border-radius: 15px 0 0 15px;
+            margin: 0px;
+        }
+        .game-card-text-sm {
+            padding: 1px 20px 0px;
+            min-width: 60%;
+        }
+        .game-card-details {
+            padding-left: 10px;
+            opacity: 80%;
+        }
+        .game-card-detail {
+            margin-bottom: 0.5rem;
+        }
+        .game-card-header {
+            padding-bottom: 0px;
+        }
+        .game-card-header a {
+            color: #404040;
+            text-decoration:underline 1.5px;
+        }
+    }
+</style>
+<div class="game-card-sm">
+    {{ if .Get "pagelink"}}<a href="{{ .Get "pagelink" }}">{{ end }}
+    <img src={{ .Get "image" }} class="game-card-image-sm"/>
+    {{ if .Get "pagelink"}}</a>{{ end }}
+    <div class="game-card-text-sm">
+        <div class="game-card-header-sm" style="margin-bottom: 2rem;">
+            <h3><span class="fa-{{ .Get "storeicon" }} fa-lg fab"></span>{{ .Get "name" }}</h3>
+        </div>
+        {{ .Inner | .Page.RenderString }}
+        <div class="game-card-details" style="margin-top: 2rem;">
+            {{/*  <div class="game-card-detail">
+                <span class="fa-user-gear fa-md fas"></span>
+                {{ .Get "role" }}
+            </div>  */}}
+            {{/*  <div class="game-card-detail">
+                <span class="fa-people-group fa-md fas"></span>
+                {{ .Get "teamsize" }}
+            </div>  */}}
+            {{/*  <div class="game-card-detail">
+                <span class="fa-clock fa-md fas"></span>
+                {{ .Get "time" }}
+            </div>  */}}
+            {{/*  <div class="game-card-detail">
+                <span class="fa-tag fa-md fas"></span>
+                {{ .Get "tags" }}
+            </div>  */}}
+        </div>
+    </div>    
+</div>
