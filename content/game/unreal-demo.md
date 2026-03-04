@@ -1,6 +1,6 @@
 ---
 date: '2025-05-08'
-draft: true
+draft: false
 title: 'Unreal Demo (2025)'
 bigimg: [{src: "/img/ue5demo.webp"}]
 ---
@@ -13,7 +13,7 @@ bigimg: [{src: "/img/ue5demo.webp"}]
 ## About the game
 ---
 
-This is a short demo created using Unreal Engine 5 and the Blueprints system for a course. See my explanation on the video below!
+This is a short demo created to learn Unreal Engine 5 and the Blueprints system. See my explanation on the video below!
 
 <br>
 

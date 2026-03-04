@@ -5,6 +5,8 @@ draft = false
 
 ## Highlights { .centerMe }
 ---
+<div class="centerMe">Long-term projects I've had a role in.</div>
+<br>
 
 {{<gamecard name="Tackle Box: The First Catch"
     image="/img/tacklebox.jpg"
@@ -36,6 +38,9 @@ Contributions include the player interaction systems and upgrading overlay-UI pu
 
 ## Learning projects { .centerMe }
 ---
+<div class="centerMe">Unpublished demos I've made to learn new things.</div>
+<br>
+
 {{<gamecard name="Unreal Engine 5 Demo"
     image="/img/ue5demo.webp"
     teamsize="Solo"
@@ -45,11 +50,26 @@ Contributions include the player interaction systems and upgrading overlay-UI pu
     pagelink="/game/unreal-demo"
     role="Programmer"
     >}}
-A short demo I created using Unreal Engine 5 and the Blueprints system.
+Demo project to learn using Unreal Engine 5 / Blueprints.
+{{</gamecard>}}
+
+{{<gamecard name="Mobile Demo"
+    image="/img/mobiledemo.webp"
+    teamsize="Solo"
+    time="12/2024"
+    tags="Unreal Engine 5, Blueprints"
+    storeicon=""
+    pagelink="/game/mobile-demo"
+    role="Programmer"
+    >}}
+Demo project to learn developing for mobile platforms on Unity.
 {{</gamecard>}}
 
 ## Game Jams { .centerMe }
 ---
+<div class="centerMe">Game-making marathons, ranging from a weekend to a month</div>
+<br>
+
 ### 2025 { .centerMe }
 ---
 {{<gamecard-sm name="Earworm"
